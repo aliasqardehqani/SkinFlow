@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: skinflow_web
+
+    env_file:
+      - .env
+
+    volumes:
+      - .:/app
+
+    ports:
+      - "${DJANGO_PORT}:${DJANGO_PORT}"
+      # - "${DEBUG_PORT}:${DEBUG_PORT}"
+    command: sh scripts/run-verbose.sh
